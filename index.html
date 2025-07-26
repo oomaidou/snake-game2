@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 小蛇大冒险 - 关卡版贪吃蛇</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <div class="game-header">
+            <h1>🐍 小蛇大冒险</h1>
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">关卡:</span>
+                    <span id="currentLevel">1</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">得分:</span>
+                    <span id="currentScore">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">目标:</span>
+                    <span id="targetScore">10</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏画布 -->
+        <div class="game-board">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            
+            <!-- 游戏状态覆盖层 -->
+            <div id="gameOverlay" class="game-overlay">
+                <div id="startScreen" class="screen">
+                    <h2>🐍 小蛇大冒险</h2>
+                    <p>帮助小蛇吃美味的食物！</p>
+                    <p>每关需要吃够指定数量的食物才能过关</p>
+                    <button id="startBtn" class="game-btn">开始游戏</button>
+                </div>
+                
+                <div id="levelCompleteScreen" class="screen hidden">
+                    <h2>🎉 恭喜过关！</h2>
+                    <p id="levelCompleteText">第1关完成！</p>
+                    <button id="nextLevelBtn" class="game-btn">下一关</button>
+                </div>
+                
+                <div id="gameCompleteScreen" class="screen hidden">
+                    <h2>🏆 游戏通关！</h2>
+                    <p>恭喜你完成了所有10关！</p>
+                    <p>你是真正的贪吃蛇大师！</p>
+                    <button id="restartBtn" class="game-btn">重新开始</button>
+                </div>
+                
+                <div id="gameOverScreen" class="screen hidden">
+                    <h2>💥 游戏结束</h2>
+                    <p id="gameOverText">小蛇撞到了障碍物</p>
+                    <button id="retryBtn" class="game-btn">重试本关</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-label">关卡进度</div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">0 / 10</span>
+            </div>
+        </div>
+
+        <!-- 控制说明 -->
+        <div class="controls-info">
+            <h3>🎮 游戏控制</h3>
+            <p>💻 电脑端：使用方向键 ↑↓←→ 或 WASD 控制</p>
+            <p>📱 手机端：滑动屏幕或点击按钮控制</p>
+        </div>
+
+        <!-- 手机控制按钮 -->
+        <div class="mobile-controls">
+            <div class="control-row">
+                <button id="upBtn" class="control-btn">↑</button>
+            </div>
+            <div class="control-row">
+                <button id="leftBtn" class="control-btn">←</button>
+                <button id="downBtn" class="control-btn">↓</button>
+                <button id="rightBtn" class="control-btn">→</button>
+            </div>
+        </div>
+
+        <!-- 游戏设置 -->
+        <div class="game-settings">
+            <label for="speedSelect">游戏速度:</label>
+            <select id="speedSelect">
+                <option value="300">慢速</option>
+                <option value="200" selected>中速</option>
+                <option value="150">快速</option>
+                <option value="100">极速</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 庆祝特效容器 -->
+    <div id="celebrationContainer" class="celebration-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
